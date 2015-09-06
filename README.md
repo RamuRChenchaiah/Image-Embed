@@ -3,6 +3,8 @@ embedImage Plugin for CKEditor 4
 
 * Inspired by base64Image (http://ckeditor.com/addon/base64image)
 
+** All validations are applicable for embedded images (only). [images from urls - not validated for the same, yet]
+
 Adds images from local client as base64 string into the source without server
 side processing. You can also add external image urls into the source.
 
