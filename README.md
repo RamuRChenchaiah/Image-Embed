@@ -6,6 +6,9 @@ embedImage Plugin for CKEditor 4
 Adds images from local client as base64 string into the source without server
 side processing. You can also add external image urls into the source.
 
+## Version:
+0.0.1
+
 ## Features:
 * Upload an image from local computer
 * Upload an image from an url
@@ -47,3 +50,6 @@ The Browser must support the JavaScript File API.
 
 	or 
 	if you have jquery gritter js & css files, include them appropriately.
+
+## Unit tests
+To run unit tests, goto the tests folder and access testSuite.html
