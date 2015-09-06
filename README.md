@@ -39,3 +39,11 @@ The Browser must support the JavaScript File API.
 
  6. Set the restriction on images: (default value is yes)
  	 Example: CKEDITOR.config.embedImageScanForRestriction = 'yes';	
+
+ 7. Include the jquery gritter in your index file or wherever you have included CKEditor.
+     Example: 
+	 <script src="ckpath/plugins/embedImage/js/jquery.gritter.min.js"> </script>
+	 <link rel="stylesheet" type="text/css" href="ckpath/plugins/embedImage/css/jquery.gritter.css"> 
+
+	or 
+	if you have jquery gritter js & css files, include them appropriately.
