@@ -3,8 +3,6 @@ embedImage Plugin for CKEditor 4
 
 * Inspired by base64Image (http://ckeditor.com/addon/base64image)
 
-** All validations are applicable for embedded images (only). [images from urls - not validated for the same, yet]
-
 Adds images from local client as base64 string into the source without server
 side processing. You can also add external image urls into the source.
 
@@ -15,13 +13,16 @@ side processing. You can also add external image urls into the source.
 * Set allowed file types
 * Scan for restricted image content - coming soon
 
+Exclusions:
+No validation on url based inclusions
+
  
 ## Requirements
 The Browser must support the JavaScript File API.
 
 ## Installation
 
- 1. Download the plugin from https://github.com/RamuRChenchaiah/Image-Embed
+ 1. Download the plugin from http://github.com/rcramu/embedImage
  
  2. Extract (decompress) the downloaded file into the plugins folder of your
 	CKEditor installation.
@@ -34,7 +35,7 @@ The Browser must support the JavaScript File API.
 	 Example: CKEDITOR.config.embedImageFileSize = 5; 
 
  5. Set the allowed types as :
- 	 Example: CKEDITOR.config.embedImageFileTypes = 'png,jpg';	
+ 	 Example: CKEDITOR.config.embedImageFileTypes = 'image/png,image/jpeg';	
 
  6. Set the restriction on images: (default value is yes)
  	 Example: CKEDITOR.config.embedImageScanForRestriction = 'yes';	

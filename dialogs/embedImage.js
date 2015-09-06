@@ -119,8 +119,11 @@ CKEDITOR.dialog.add("embedImageDialog", function(editor){
 				try{
 					// Current image size
 					var __contentSize = n.files[0].size/1024/1000
+					// Get the recent instance of CKEDITOR
+					var __ckInstance = CKEDITOR.instances
+					var currentEditor = __ckInstance[Object.keys(__ckInstance)[ Object.keys(__ckInstance).length-1 ]]
 					// Total size, in the current edit
-					var __prevSize = CKEDITOR.instances['wysiwyg-editor'].getData().length/1024/1000
+					var __prevSize = currentEditor.getData().length/1024/1000
 					var __totalSize = __contentSize + __prevSize
 					var configuredImageSize = (editor.config.embedImageFileSize || 5)
 					if(__contentSize > configuredImageSize){
@@ -137,13 +140,13 @@ CKEDITOR.dialog.add("embedImageDialog", function(editor){
 				
 				// Validate for file types 
 				try{
-					var defaultAllowedFileTypes = 'png,jpg';
+					var defaultAllowedFileTypes = 'image/png,image/jpeg';
 					var allowedFileTypes = (editor.config.embedImageFileTypes || defaultAllowedFileTypes)
 					var selectedFileType = n.files[0].type
 					if(allowedFileTypes.indexOf(selectedFileType) == -1){
 		                    jQuery.gritter.add({
 		                        title: 'Invalid file type',
-		                        text: 'Allowed file types are: ' + allowedFileTypes',
+		                        text: 'Allowed file types are: ' + allowedFileTypes,
 		                        class_name: 'gritter-error'
 		                    });
 		                    return false;							
