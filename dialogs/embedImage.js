@@ -114,6 +114,43 @@ CKEDITOR.dialog.add("embedImageDialog", function(editor){
 					imgPreview.getElement().setHtml("");
 					imagePreviewLoad(e.target.result);
 				}; })(n.files[0]);
+				
+				// Validate for image size.
+				try{
+					// Current image size
+					var __contentSize = n.files[0].size/1024/1000
+					// Total size, in the current edit
+					var __prevSize = CKEDITOR.instances['wysiwyg-editor'].getData().length/1024/1000
+					var __totalSize = __contentSize + __prevSize
+					var configuredImageSize = (editor.config.embedImageFileSize || 5)
+					if(__contentSize > configuredImageSize){
+		                    jQuery.gritter.add({
+		                        title: 'Maximum allowed size is: ' + configuredImageSize +' MB(s)',
+		                        text: 'Current image size: ' + __contentSize.toFixed(2) + '; Existing content size: '+ __prevSize.toFixed(2) + '( in MBs)',
+		                        class_name: 'gritter-error'
+		                    });
+		                    return false;					
+					}
+				}catch(error){
+					console.log("[embedImage.js :: ]", error)
+				}
+				
+				// Validate for file types 
+				try{
+					var defaultAllowedFileTypes = 'png,jpg';
+					var allowedFileTypes = (editor.config.embedImageFileTypes || defaultAllowedFileTypes)
+					var selectedFileType = n.files[0].type
+					if(allowedFileTypes.indexOf(selectedFileType) == -1){
+		                    jQuery.gritter.add({
+		                        title: 'Invalid file type',
+		                        text: 'Allowed file types are: ' + allowedFileTypes',
+		                        class_name: 'gritter-error'
+		                    });
+		                    return false;							
+					}
+				}catch(err){
+					console.log("[embedImage.js :: ]", error)
+				}
 				fr.onerror = function(){ imgPreview.getElement().setHtml(""); };
 				fr.onabort = function(){ imgPreview.getElement().setHtml(""); };
 				fr.readAsDataURL(n.files[0]);
