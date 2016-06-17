@@ -25,7 +25,7 @@ The Browser must support the JavaScript File API.
 
 ## Installation
 
- 1. Download the plugin from http://github.com/rcramu/embedImage
+ 1. Download the plugin from https://github.com/RamuRChenchaiah/Image-Embed
  
  2. Extract (decompress) the downloaded file into the plugins folder of your
 	CKEditor installation.
